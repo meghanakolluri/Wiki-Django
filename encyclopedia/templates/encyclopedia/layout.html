@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'encyclopedia/styles.css' %}">
+    </head>
+    <body>
+        <style>
+            #h{
+                margin-bottom:5%;
+            }
+            html{
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            .btn{
+                height:100%;
+                width:100%;
+                padding-top:10px;
+                padding-bottom: 10px;
+                margin-top:30px;
+                text-align:center;
+            }
+            #sub1{
+                margin-top:20px;
+                margin-left:36%;
+            }
+            .search{
+                height:40px;
+                width:100%;
+            }
+            .main{
+                margin-left:auto;
+            }
+            #particles-js{
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                z-index: -100;
+                background:#e6e6e6;
+            }
+        </style>
+        <script>
+            function myfunc()
+            {
+                var input,fil,ul;
+                input=document.getElementById("in");
+                fil = input.value.toUpperCase();
+                ul=util.list_entries();
+                for(i=0;i<ul.length;i++)
+                {
+                    a=ul[i][0]
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                         li[i].style.display = "";
+                    } else {
+                          li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+        <div id="particles-js"></div>
+        <div class="row">
+            <div class="sidebar col-lg-2 col-md-3">
+                <img src="{% static 'encyclopedia/wiki-ch.jpg' %}" alt="wiki" style="width:100%;height:30%">
+                <h1 id="h">Wiki</h1>
+                <form action="{% url 'encyclopedia:search' %}" method="POST">
+                    {% csrf_token %}
+                    <input class="search" type="text" name="q" id="in" placeholder="Search here..">
+                    <input type="submit" value="Search" class="btn btn-info">
+                </form>
+                <div class="st1">
+                    <a href="{% url 'encyclopedia:welcome' %}" class="btn btn-dark">Home</a>
+                </div>
+                <div class="st1">
+                    <a href="{% url 'encyclopedia:index' %}" class="btn btn-dark">All Pages</a>
+                </div>
+                <div class="st1">
+                    <a href="{% url 'encyclopedia:new' %}" class="btn btn-dark">Create New Page</a>
+                </div>
+                <div class="st1">
+                    <a href="{% url 'encyclopedia:randompage' %}" class="btn btn-dark">Create random page</a>
+                </div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <script type="text/javascript" src="{% static 'encyclopedia/particles.js' %}">
+       </script>
+       <script type="text/javascript" src="{% static 'encyclopedia/app.js' %}">
+       </script>
+    </body>
+</html>

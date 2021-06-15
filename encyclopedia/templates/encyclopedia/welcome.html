@@ -1,0 +1,55 @@
+{% extends 'encyclopedia/layout.html' %}
+{% block title %}
+    Home
+{% endblock %}
+{% block body %}
+<style>
+    #st {
+  animation-duration: 7s;
+  animation-name: slidein;
+  animation-iteration-count:infinite;
+  font-size: 6vw;
+}
+#st2
+{
+    animation-duration: 7s;
+  animation-name:mymove;
+  animation-iteration-count:infinite;
+  font-size: 4vw;
+  margin-top: 2%;
+}
+.rap{
+    margin-top:5%;
+    font-size: 1.7vw;
+    margin-left:2%;
+}
+@keyframes mymove {
+    from{
+        margin-left:100vw;
+        width:100%
+    }
+    to{
+        margin-left:15vw;
+        width:300%;
+    }
+    
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 0vw;
+    width: 300vw;
+  }
+
+  to {
+    margin-left: 20vw;
+    width: 100vw;
+  }
+}
+
+</style>
+ <h1 id="st">Welcome to WIKI</h1>
+ <h2 id="st2">Hello there! My name is Meghana</h2>
+ <p class="rap">Welcome to the world of customized wiki!</p>
+ <p class="rap">Here you can add your own pages, search for the existing pages and can even edit them with your own content :)</p>
+ {% endblock %}

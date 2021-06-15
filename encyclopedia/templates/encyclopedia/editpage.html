@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    {{title | safe}}
+{% endblock %}
+
+{% block body %}
+<style>
+    .formel{
+        margin-left:2%;
+        margin-top:1%;
+    }
+</style>
+<form action="{% url 'encyclopedia:edit' %}" method="POST">
+    {% csrf_token %}
+    <div class="formel">
+    <label>Title: </label>
+    <br>
+    <input type="text" value=" {{title}} " id="title" name="title">
+    </div>
+    <div class="formel">
+    <label>Content: </label>
+    <br>
+    <textarea style="width: 80%; height:300px;"  name="textarea"  id="textarea" >{{mdcontent}}</textarea>
+    </div>
+    <input type="submit" class="formel">
+</form>
+{% endblock %}

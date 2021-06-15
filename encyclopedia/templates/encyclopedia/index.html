@@ -1,0 +1,40 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+{% block body %}
+<style>
+.linkk {
+  display: inline-block;
+  width: 45%;
+  border: none;
+  background-color:gray;
+  color: white;
+  margin-top:1%;
+  margin-bottom: 1%;
+  padding-top:3%;
+  padding-bottom: 3%;
+  margin-right:2%;
+  margin-left:2%;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+}
+.fl{
+  align-content: center;
+  width:100%;
+}
+.linkk:hover {
+  background-color: rgb(56, 50, 50);
+  color:white;
+}
+    </style>
+    <h1>All Pages</h1>
+    <div class="fl">
+        {% for entry in entries %}
+            <a class="linkk" href="{% url 'encyclopedia:entry_page' entry %}">{{ entry }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

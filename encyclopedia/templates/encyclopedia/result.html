@@ -1,0 +1,44 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+        Search Results
+{% endblock %}
+{% block body %}
+<style>
+body{
+        overflow-y: auto;
+        overflow-x: hidden;
+}
+.linkk {
+  display: inline-block;
+  width: 45%;
+  border: none;
+  background-color:gray;
+  color: white;
+  margin-top:1%;
+  margin-bottom: 1%;
+  padding-top:3%;
+  padding-bottom: 3%;
+  margin-right:1%;
+  margin-left:1%;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+}
+.linkk:hover {
+  background-color: rgb(44, 41, 41);
+  color:white;
+}
+</style>
+<div style="margin-left:1vw;">
+<h1>Search Results</h1>
+<div>
+    {% for entry in results %}
+   <a class="linkk" href="{% url 'encyclopedia:entry_page' entry %}">{{ entry }}</a>
+        
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

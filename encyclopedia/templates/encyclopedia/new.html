@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+<style>
+    body{
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+</style>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="formel">
+    <label>Title: </label>
+    <br>
+    {{ form.task1 }}
+    </div>
+    <div class="formel">
+    <label>Content: </label>
+    <br>
+    {{ form.task2 }}
+    </div>
+    <input type="submit">
+</form>
+{% endblock %}
