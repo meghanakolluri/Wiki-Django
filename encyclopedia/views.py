@@ -67,14 +67,11 @@ def edit(request):
     })
 
 def randompage(request):
-    filename = random.choice(os.listdir(r"C:\Users\kollu\Onedrive\Desktop\wiki\entries"))
+    filename = random.choice(os.listdir(r"entries"))
     title = os.path.splitext(filename)[0] 
 
     mdcontents, mybool = util.get_entry(title)
     html=markdown2.markdown(mdcontents)
-    print(title)
-    print(html)
-    
     return render(request,"encyclopedia/entrypage.html",{
     "title":title,
     "html" : html
