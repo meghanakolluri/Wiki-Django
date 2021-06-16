@@ -67,7 +67,7 @@ def edit(request):
     })
 
 def randompage(request):
-    filename = random.choice(os.listdir(r"C:\Users\kollu\Downloads\wiki\wiki\entries"))
+    filename = random.choice(os.listdir(r"C:\Users\kollu\Onedrive\Desktop\wiki\entries"))
     title = os.path.splitext(filename)[0] 
 
     mdcontents, mybool = util.get_entry(title)
