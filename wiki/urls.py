@@ -24,4 +24,4 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("encyclopedia.urls")),
-]+static(settings.STATIC_url,document_root=settings.STATIC_ROOT)
+]+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
